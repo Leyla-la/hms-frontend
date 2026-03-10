@@ -9,14 +9,21 @@ const RegisterPage = () => {
   const form = useForm({
     mode: 'uncontrolled',
     initialValues: {
+      name: '',
       type: 'PATIENT',
       email: '',
       password: '',
       confirmPassword: '',
     },
     validate: {
+      name: (value) => (value ? null : 'Name is required'),
       email: (value) => (/^\S+@\S+$/.test(value) ? null : 'Invalid email'),
-      password: (value) => (value.length < 6 ? 'Password must be at least 6 characters' : null),
+      password: (value) =>
+  !value
+    ? "Password is required"
+    : !/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/.test(value)
+    ? "Password must be at least 8 characters long and include uppercase, lowercase, number, and special character"
+    : null,
       confirmPassword: (value, values) => (value !== values.password ? 'Passwords do not match' : null),
     },
   });
@@ -42,6 +49,14 @@ const RegisterPage = () => {
             {...form.getInputProps('type')}
             fullWidth size="md" radius="md" color="pink" bg="none" className='[&_*]:!text-white border border-white'
             data={[{ label: 'Admin', value: 'ADMIN' }, { label: 'Patient', value: 'PATIENT' }, { label: 'Doctor', value: 'DOCTOR' }]} />
+          <TextInput
+            className="transition duration-200"
+            variant="unstyled"
+            size="md"
+            radius="md"
+            placeholder="Enter your name"
+            {...form.getInputProps('name')}
+          />
           <TextInput
             className="transition duration-200"
             variant="unstyled"
