@@ -22,35 +22,41 @@ const links = [
 ]
 const Sidebar = () => {
   return (
-      <div className='w-64 bg-red-200 flex flex-col gap-7 items-center py-3'>
-        <div className='flex items-center text-red-500 gap-1 items-center'>
+    <div className='flex'>
+      <div className='w-64'>
+      </div>
+      <div className='fixed h-screen w-64 bg-dark flex flex-col gap-7 items-center py-3'>
+        <div className='fixed py-3 z-[500] bg-dark flex items-center text-primary-400 gap-1 items-center'>
           <IconHeartbeat size={40} stroke={2.5} />
           <span className='font-heading font-semibold text-3xl'>Pulse</span>
         </div>
-        <div className='flex flex-col gap-1 items-center'>
-          <div className='p-1 bg-white rounded-full shadow-lg '>
-            <Avatar variant="filled" src="ssmr-avt.jpg" size='xl' alt="User avatar" />
+        <div className='mt-20 flex flex-col gap-5'>
+          <div className='flex flex-col gap-1 items-center'>
+            <div className='p-1 bg-white rounded-full shadow-lg '>
+              <Avatar variant="filled" src="ssmr-avt.jpg" size='xl' alt="User avatar" />
+            </div>
+            <span className='font-medium text-light'>ttgiangnekk</span>
+            <Text c="dimmed" size='xs'>Admin</Text>
           </div>
-          <span className='font-medium'>ttgiangnekk</span>
-          <Text c="dimmed" size='xl'>Admin</Text>
-        </div>
-        <div className='flex flex-col gap-1'>
-          {links.map((link) => {
-            return (
-              <NavLink
-                to={link.url}
-                key={link.url}
-                className={({ isActive }) =>
-                  `flex items-center gap-3 w-full font-medium text-neutral-900 px-4 py-5 rounded-lg ${isActive ? 'bg-primary-400' : 'hover:bg-gray-100'}`
-                }
-              >
-                {link.icon}
-                <span>{link.name}</span>
-              </NavLink>
-            )
-          })}
+          <div className='flex flex-col gap-1'>
+            {links.map((link) => {
+              return (
+                <NavLink
+                  to={link.url}
+                  key={link.url}
+                  className={({ isActive }) =>
+                    `flex items-center gap-3 w-full font-medium px-4 py-5 rounded-lg ${isActive ? 'bg-primary-400 text-dark' : 'hover:bg-gray-100 hover:text-dark text-light'}`
+                  }
+                >
+                  {link.icon}
+                  <span>{link.name}</span>
+                </NavLink>
+              )
+            })}
+          </div>
         </div>
       </div>
+    </div>
 
   )
 }
