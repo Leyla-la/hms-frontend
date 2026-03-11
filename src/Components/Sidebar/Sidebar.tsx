@@ -1,6 +1,7 @@
 import { Avatar, Text } from '@mantine/core'
 import { IconCalendarCheck, IconHeartbeat, IconLayoutGrid, IconStethoscope, IconVaccine, IconMoodHeart } from '@tabler/icons-react'
 import React from 'react'
+import { useSelector } from 'react-redux'
 import { NavLink } from 'react-router-dom'
 
 const links = [
@@ -21,6 +22,8 @@ const links = [
   },
 ]
 const Sidebar = () => {
+  const user = useSelector((state: any) => state.user);
+
   return (
     <div className='flex'>
       <div className='w-64'>
@@ -35,8 +38,8 @@ const Sidebar = () => {
             <div className='p-1 bg-white rounded-full shadow-lg '>
               <Avatar variant="filled" src="ssmr-avt.jpg" size='xl' alt="User avatar" />
             </div>
-            <span className='font-medium text-light'>ttgiangnekk</span>
-            <Text c="dimmed" size='xs'>Admin</Text>
+            <span className='font-medium text-light'>{user.name}</span>
+            <Text c="dimmed" size='xs'>{user.role}</Text>
           </div>
           <div className='flex flex-col gap-1'>
             {links.map((link) => {

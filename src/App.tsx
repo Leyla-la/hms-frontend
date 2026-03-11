@@ -3,7 +3,9 @@ import '@mantine/core/styles.css';
 import '@mantine/notifications/styles.css';
 import { Notifications } from '@mantine/notifications';
 import { createTheme, MantineProvider } from '@mantine/core';
+import { Provider } from 'react-redux';
 import AppRoutes from './Routes/AppRoutes.tsx';
+import Store from './Utility/Store.tsx';
 
 const theme = createTheme({
   fontFamily: "Google Sans, sans-serif",
@@ -22,10 +24,12 @@ const theme = createTheme({
 
 function App() {
   return (
-    <MantineProvider theme={theme}>
-      <Notifications position='top-right' />
-      <AppRoutes />
-    </MantineProvider>
+    <Provider store={Store}>
+      <MantineProvider theme={theme}>
+        <Notifications position='top-right' />
+        <AppRoutes />
+      </MantineProvider>
+    </Provider>
   );
 }
 

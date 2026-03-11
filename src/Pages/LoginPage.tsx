@@ -1,12 +1,19 @@
 import { Button, PasswordInput, TextInput } from '@mantine/core'
 import { IconHeartbeat } from '@tabler/icons-react'
 import { useForm } from '@mantine/form'
-import React from 'react'
+import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { loginUser } from '../Service/UserService.tsx'
 import { errorNotification, successNotification } from '../Utility/NotificationUtil.tsx'
+import { useDispatch } from 'react-redux'
+import { setToken } from '../Slices/JwtSlice.tsx'
+import { jwtDecode } from 'jwt-decode';
+import { setUser } from '../Slices/UserSlice.tsx'
 
 const LoginPage = () => {
+  const dispatch = useDispatch();
+
+  const [loading, setLoading] = useState(false);
 
   const form = useForm({
     mode: 'uncontrolled',
@@ -22,12 +29,18 @@ const LoginPage = () => {
 
   const handleSubmit = (values: typeof form.values) => {
     console.log('Form submitted with values:', values);
+    setLoading(true);
     loginUser(values).then((response) => {
       console.log('User logged in successfully:', response);
+      console.log(jwtDecode(response));
       successNotification('User logged in successfully!');
+      dispatch(setToken(response));
+      dispatch(setUser(jwtDecode(response)));
     }).catch((error) => {
       console.error('Error logging in user:', error);
       errorNotification(error.response?.data?.errorMessage || 'Failed to log in. Please check your credentials and try again.');
+    }).finally(() => {
+      setLoading(false);
     });
   }
 
@@ -60,7 +73,7 @@ const LoginPage = () => {
             {...form.getInputProps('password')}
             styles={{ input: { backgroundColor: 'transparent' } }}
           />
-          <Button radius="md" size='md' type='submit' color="pink">Login</Button>
+          <Button loading={loading} radius="md" size='md' type='submit' color="pink">Login</Button>
           <div className='self-center text-neutral-100 text-sm'>Don't have an account? <Link className='hover:underline' to="/register">Register</Link> </div>
         </form>
       </div>

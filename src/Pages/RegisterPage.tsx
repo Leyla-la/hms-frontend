@@ -15,7 +15,7 @@ const RegisterPage = () => {
     mode: 'uncontrolled',
     initialValues: {
       name: '',
-      type: 'PATIENT',
+      role: 'PATIENT',
       email: '',
       password: '',
       confirmPassword: '',
@@ -62,7 +62,7 @@ const RegisterPage = () => {
         <form onSubmit={form.onSubmit(handleSubmit)} className='flex flex-col gap-5 [&_input]:placeholder:text-neutral-100 [&_.mantine-Input-input]:!border-white focus-within:[&_.mantine-Input-input]:!border-pink-400 [&_.mantine-Input-input]:!border [&_input]:!pl-2 [&_input]:text-light [&_svg]:!text-white'>
           <div className='self-center font-medium font-heading text-white text-xl'>Register</div>
           <SegmentedControl
-            {...form.getInputProps('type')}
+            {...form.getInputProps('role')}
             fullWidth size="md" radius="md" color="pink" bg="none" className='[&_*]:!text-white border border-white'
             data={[{ label: 'Admin', value: 'ADMIN' }, { label: 'Patient', value: 'PATIENT' }, { label: 'Doctor', value: 'DOCTOR' }]} />
           <TextInput
