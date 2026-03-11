@@ -3,6 +3,8 @@ import { IconHeartbeat } from '@tabler/icons-react'
 import { useForm } from '@mantine/form'
 import React from 'react'
 import { Link } from 'react-router-dom'
+import { loginUser } from '../Service/UserService.tsx'
+import { errorNotification, successNotification } from '../Utility/NotificationUtil.tsx'
 
 const LoginPage = () => {
 
@@ -20,7 +22,13 @@ const LoginPage = () => {
 
   const handleSubmit = (values: typeof form.values) => {
     console.log('Form submitted with values:', values);
-    // Here you can add your login logic, such as making an API call to authenticate the user
+    loginUser(values).then((response) => {
+      console.log('User logged in successfully:', response);
+      successNotification('User logged in successfully!');
+    }).catch((error) => {
+      console.error('Error logging in user:', error);
+      errorNotification(error.response?.data?.errorMessage || 'Failed to log in. Please check your credentials and try again.');
+    });
   }
 
   return (

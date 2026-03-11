@@ -1,11 +1,16 @@
 import { Button, PasswordInput, SegmentedControl, TextInput } from '@mantine/core'
 import { IconHeartbeat } from '@tabler/icons-react'
 import { useForm } from '@mantine/form'
-import React from 'react'
-import { Link } from 'react-router-dom'
+import React, { useState } from 'react'
+import { Link, useNavigate } from 'react-router-dom'
+import { registerUser } from '../Service/UserService.tsx'
+import { successNotification, errorNotification } from '../Utility/NotificationUtil.tsx'
 
 const RegisterPage = () => {
 
+  const navigate = useNavigate();
+  const [loading, setLoading] = useState(false);
+  
   const form = useForm({
     mode: 'uncontrolled',
     initialValues: {
@@ -30,7 +35,18 @@ const RegisterPage = () => {
 
   const handleSubmit = (values: typeof form.values) => {
     console.log('Form submitted with values:', values);
-    // Here you can add your Register logic, such as making an API call to authenticate the user
+    setLoading(true);
+    registerUser(values).then((response) => {
+      console.log('User registered successfully:', response);
+      successNotification('User registered successfully!');
+      navigate('/login');
+    }).catch((error) => {
+      console.error('Error registering user:', error);
+      errorNotification(error.response?.data?.errorMessage || 'Failed to register user. Please try again.');
+
+    }).finally(() => {
+      setLoading(false);
+    });
   }
 
   return (
@@ -81,7 +97,7 @@ const RegisterPage = () => {
             mt="md"
             {...form.getInputProps('confirmPassword')}
           />
-          <Button radius="md" size='md' type='submit' color="pink">Register</Button>
+          <Button loading={loading} radius="md" size='md' type='submit' color="pink">Register</Button>
           <div className='self-center text-neutral-100 text-sm'>Already have an account? <Link className='hover:underline' to="/login">Login</Link> </div>
         </form>
       </div>
