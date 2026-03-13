@@ -12,7 +12,6 @@ import { setUser } from '../Slices/UserSlice.tsx'
 
 const LoginPage = () => {
   const dispatch = useDispatch();
-
   const [loading, setLoading] = useState(false);
 
   const form = useForm({
@@ -32,10 +31,10 @@ const LoginPage = () => {
     setLoading(true);
     loginUser(values).then((response) => {
       console.log('User logged in successfully:', response);
-      console.log(jwtDecode(response));
+      const user: any = jwtDecode(response);
       successNotification('User logged in successfully!');
       dispatch(setToken(response));
-      dispatch(setUser(jwtDecode(response)));
+      dispatch(setUser(user));
     }).catch((error) => {
       console.error('Error logging in user:', error);
       errorNotification(error.response?.data?.errorMessage || 'Failed to log in. Please check your credentials and try again.');

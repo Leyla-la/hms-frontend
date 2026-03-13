@@ -1,24 +1,24 @@
 import { Avatar, Text } from '@mantine/core'
-import { IconCalendarCheck, IconHeartbeat, IconLayoutGrid, IconStethoscope, IconVaccine, IconMoodHeart } from '@tabler/icons-react'
+import { IconCalendarCheck, IconHeartbeat, IconLayoutGrid, IconStethoscope, IconMoodHeart, IconVaccine } from '@tabler/icons-react'
 import React from 'react'
 import { useSelector } from 'react-redux'
 import { NavLink } from 'react-router-dom'
 
 const links = [
   {
-    name: "Dashboard", url: "/dashboard", icon: <IconLayoutGrid stroke={1.5} />
+    name: "Dashboard", url: "doctor/dashboard", icon: <IconLayoutGrid stroke={1.5} />
   },
   {
-    name: "Doctors", url: "/doctors", icon: <IconStethoscope stroke={1.5} />
+    name: "Profile", url: "doctor/profile", icon: <IconStethoscope stroke={1.5} />
   },
   {
-    name: "Patients", url: "/patients", icon: <IconMoodHeart stroke={1.5} />
+    name: "Patients", url: "doctor/patients", icon: <IconMoodHeart stroke={1.5} />
   },
   {
-    name: "Appointments", url: "/appointments", icon: <IconCalendarCheck stroke={1.5} />
+    name: "Appointments", url: "doctor/appointments", icon: <IconCalendarCheck stroke={1.5} />
   },
   {
-    name: "Pharmacy", url: "/pharmacy", icon: <IconVaccine stroke={1.5} />
+    name: "Pharmacy", url: "doctor/pharmacy", icon: <IconVaccine stroke={1.5} />
   },
 ]
 const Sidebar = () => {

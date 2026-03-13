@@ -17,7 +17,7 @@ const ProfileMenu = () => {
       <Menu.Target>
         <div className='flex items-center gap-3'>
             <span className='font-medium text-lg text-neutral-900'>{user.name}</span>
-            <Avatar variant="filled" src="ssmr-avt.jpg" size={45} alt="User avatar" />
+            <Avatar variant="filled" src="/ssmr-avt.jpg" size={45} alt="User avatar" />
         </div>
       </Menu.Target>
 

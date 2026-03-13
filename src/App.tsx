@@ -1,6 +1,8 @@
 import './App.css';
 import '@mantine/core/styles.css';
 import '@mantine/notifications/styles.css';
+import '@mantine/dates/styles.css';
+import 'react-phone-number-input/style.css'
 import { Notifications } from '@mantine/notifications';
 import { createTheme, MantineProvider } from '@mantine/core';
 import { Provider } from 'react-redux';

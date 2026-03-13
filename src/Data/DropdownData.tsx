@@ -1,0 +1,5 @@
+const bloodGroups = ["A+", "A-", "B+", "B-", "AB+", "AB-", "O+", "O-"];
+const doctorSpecializations = ["Anesthesiology", "Cardiology", "Dermatology", "Emergency Medicine", "Endocrinology", "Gastroenterology", "General Surgery", "Geriatrics", "Hematology", "Infectious Diseases", "Internal Medicine", "Nephrology", "Neurology", "Obstetrics and Gynecology", "Oncology", "Ophthalmology", "Orthopedics", "Otolaryngology (ENT)", "Pediatrics", "Physical Medicine and Rehabilitation", "Psychiatry", "Pulmonology", "Radiology", "Rheumatology", "Urology"];
+const doctorDepartments = ["Emergency", "Intensive Care Unit (ICU)", "Cardiology", "Dermatology", "Endocrinology", "Gastroenterology", "General Surgery", "Hematology", "Internal Medicine", "Nephrology", "Neurology", "Obstetrics and Gynecology", "Oncology", "Ophthalmology", "Orthopedics", "Otolaryngology (ENT)", "Pediatrics", "Psychiatry", "Pulmonology", "Radiology", "Rheumatology", "Urology"];
+
+export { bloodGroups, doctorSpecializations, doctorDepartments };

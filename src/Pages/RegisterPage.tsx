@@ -36,7 +36,8 @@ const RegisterPage = () => {
   const handleSubmit = (values: typeof form.values) => {
     console.log('Form submitted with values:', values);
     setLoading(true);
-    registerUser(values).then((response) => {
+    const { confirmPassword, ...userData } = values;
+    registerUser(userData).then((response) => {
       console.log('User registered successfully:', response);
       successNotification('User registered successfully!');
       navigate('/login');
