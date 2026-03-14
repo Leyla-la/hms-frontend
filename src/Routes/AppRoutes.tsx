@@ -8,6 +8,8 @@ import ProtectedRoute from './ProtectedRoute.tsx'
 import PatientDashboard from '../Layout/PatientDashboard.tsx'
 import DoctorDashboard from '../Layout/DoctorDashboard.tsx'
 import PatientProfilePage from '../Pages/Patient/PatientProfilePage.tsx'
+import DoctorProfilePage from '../Pages/Doctor/DoctorProfilePage.tsx'
+
 
 const AppRoutes = () => {
     return (
@@ -28,6 +30,7 @@ const AppRoutes = () => {
                 </Route>
                 <Route path="/doctor" element={<ProtectedRoute><DoctorDashboard /></ProtectedRoute>}>
                     <Route path="dashboard" element={<Random />} />
+                    <Route path="profile" element={<DoctorProfilePage />} />
                     <Route path="pharmacy" element={<Random />} />
                     <Route path="patients" element={<Random />} />
                     <Route path="appointments" element={<Random />} />
