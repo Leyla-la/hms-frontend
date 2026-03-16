@@ -3,7 +3,11 @@ module.exports = {
   content: [
     "./src/**/*.{js,jsx,ts,tsx}",
   ],
-  important: true,
+  // NOTE: Mantine (and other UI libs) often render popovers/modals in a portal
+  // outside of `#root`. Scoping Tailwind utilities to `#root` prevents those
+  // utilities from matching in portaled content.
+  // Using `:root` keeps the extra specificity without breaking portals.
+  important: ':root',
   theme: {
     extend: {
       fontFamily: {
