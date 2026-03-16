@@ -13,4 +13,20 @@ const formatLocalDate = (dateValue: any) => {
     return new Date(dateValue).toLocaleDateString('en-CA');
 }
 
-export { formatDate, formatLocalDate };
+const formatDateWithTime = (dateString: any) => {
+    if (!dateString) return undefined;
+    const date = new Date(dateString);
+    
+    const options: Intl.DateTimeFormatOptions = {
+        weekday: 'long',
+        year: 'numeric',
+        month: 'long',  
+        day: 'numeric',
+        hour: '2-digit',
+        minute: '2-digit',
+        hour12: true
+    };
+    return date.toLocaleDateString('en-US', options);
+}
+
+export { formatDate, formatLocalDate, formatDateWithTime };

@@ -1,13 +1,11 @@
 import './App.css';
-import '@mantine/core/styles.css';
-import '@mantine/notifications/styles.css';
-import '@mantine/dates/styles.css';
-import 'react-phone-number-input/style.css'
 import { Notifications } from '@mantine/notifications';
 import { createTheme, MantineProvider } from '@mantine/core';
 import { Provider } from 'react-redux';
 import AppRoutes from './Routes/AppRoutes.tsx';
+import { PrimeReactProvider } from 'primereact/api';
 import Store from './Utility/Store.tsx';
+import { ModalsProvider } from '@mantine/modals';
 
 const theme = createTheme({
   fontFamily: "Google Sans, sans-serif",
@@ -28,8 +26,12 @@ function App() {
   return (
     <Provider store={Store}>
       <MantineProvider theme={theme}>
-        <Notifications position='top-right' />
-        <AppRoutes />
+        <ModalsProvider>
+          <PrimeReactProvider>
+            <Notifications position='top-right' />
+            <AppRoutes />
+          </PrimeReactProvider>
+        </ModalsProvider>
       </MantineProvider>
     </Provider>
   );
