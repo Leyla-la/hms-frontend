@@ -11,6 +11,7 @@ import PatientProfilePage from '../Pages/Patient/PatientProfilePage.tsx'
 import DoctorProfilePage from '../Pages/Doctor/DoctorProfilePage.tsx'
 import PatientAppointmentPage from '../Pages/Patient/PatientAppointmentPage.tsx'
 import DoctorAppointmentPage from '../Pages/Doctor/DoctorAppointmentPage.tsx'
+import DoctorAppointmentDetailsPage from '../Pages/Doctor/DoctorAppointmentDetailsPage.tsx'
 
 
 const AppRoutes = () => {
@@ -36,6 +37,7 @@ const AppRoutes = () => {
                     <Route path="pharmacy" element={<Random />} />
                     <Route path="patients" element={<Random />} />
                     <Route path="appointments" element={<DoctorAppointmentPage />} />
+                    <Route path="appointments/:id" element={<DoctorAppointmentDetailsPage />} />
                     <Route path="doctors" element={<Random />} />
                 </Route>
             </Routes>

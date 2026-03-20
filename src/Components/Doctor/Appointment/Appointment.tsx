@@ -7,7 +7,7 @@ import { ActionIcon, Button, LoadingOverlay, Modal, SegmentedControl, Select, Te
 import { DateTimePicker } from '@mantine/dates';
 import { Tag } from 'primereact/tag';
 import { TextInput } from '@mantine/core';
-import { IconSearch, IconTrash } from '@tabler/icons-react';
+import { IconEye, IconSearch, IconTrash } from '@tabler/icons-react';
 import { useForm } from '@mantine/form';
 import { useSelector } from 'react-redux';
 import { useDisclosure } from '@mantine/hooks';
@@ -20,10 +20,12 @@ import 'primereact/resources/themes/lara-light-blue/theme.css';
 import { modals } from '@mantine/modals';
 import { Text } from '@mantine/core';
 import { Toolbar } from 'primereact/toolbar';
+import { useNavigate } from 'react-router-dom';
 
 
 const Appointment = () => {
     const [loading, setLoading] = useState<boolean>(false);
+    const navigate = useNavigate();
     const [opened, { close }] = useDisclosure(false);
     const [appointments, setAppointments] = useState<any[]>([]);
     const [doctors, setDoctors] = useState<any[]>([]);
@@ -108,6 +110,9 @@ const Appointment = () => {
 
     const activityBodyTemplate = (rowData: any) => {
         return <div className='flex gap-2'>
+            <ActionIcon onClick={() => navigate("" + rowData.id)}>
+                <IconEye size={20} stroke={1.5} />
+            </ActionIcon>
             <ActionIcon color='red' onClick={() => handleDelete(rowData)}>
                 <IconTrash size={20} stroke={1.5} />
             </ActionIcon>
