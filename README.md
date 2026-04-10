@@ -299,9 +299,3 @@ git push origin feat/your-feature
 **Branch conventions:** `feat/` · `fix/` · `refactor/` · `chore/`
 
 ---
-
-<div align="center">
-
-Built with ❤️ · React · TypeScript · Mantine UI · Real-time WebSocket
-
-</div>
