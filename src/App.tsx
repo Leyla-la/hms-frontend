@@ -1,10 +1,14 @@
+import '@mantine/core/styles.css'
 import './App.css';
 import { Notifications } from '@mantine/notifications';
 import { createTheme, MantineProvider } from '@mantine/core';
+import '@mantine/spotlight/styles.css';
+import '@mantine/dropzone/styles.css';
 import { Provider } from 'react-redux';
 import AppRoutes from './Routes/AppRoutes.tsx';
 import { PrimeReactProvider } from 'primereact/api';
 import Store from './Utility/Store.tsx';
+import AuthBootstrap from './Utility/AuthBootstrap.tsx';
 import { ModalsProvider } from '@mantine/modals';
 
 const theme = createTheme({
@@ -29,6 +33,7 @@ function App() {
         <ModalsProvider>
           <PrimeReactProvider>
             <Notifications position='top-right' />
+            <AuthBootstrap />
             <AppRoutes />
           </PrimeReactProvider>
         </ModalsProvider>
