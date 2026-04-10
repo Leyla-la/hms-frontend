@@ -1,0 +1,9 @@
+{
+  "$schema": "https://www.schemastore.org/tsconfig",
+  "extends": "@tsconfig/create-react-app/tsconfig.json",
+  "compilerOptions": {
+    "strict": false,
+    "allowImportingTsExtensions": true
+  },
+  "include": ["src"]
+}
